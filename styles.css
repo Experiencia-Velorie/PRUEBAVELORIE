@@ -1,0 +1,56 @@
+/* RESET */
+* { margin: 0; padding: 0; box-sizing: border-box; }
+html, body { width: 100%; height: 100%; background: #000; overflow: hidden; }
+
+/* ESCENA */
+#scene { position: fixed; inset: 0; z-index: 1; }
+
+/* VIDEO */
+video {
+  position: absolute; inset: 0; width: 100%; height: 100%; object-fit: cover;
+  opacity: 0; transition: opacity 1.2s ease; will-change: transform, filter;
+}
+#v1 { opacity: 1; z-index: 1; }
+#v2 { z-index: 2; }
+#v3 { z-index: 3; }
+
+/* CAMPO DE DENSIDAD */
+#density-field {
+  position: fixed; inset: 0; z-index: 5; pointer-events: none;
+  background: radial-gradient(circle at center, rgba(0,0,0,0) 0%, rgba(0,0,0,0.4) 40%, rgba(0,0,0,0.85) 75%, rgba(0,0,0,1) 100%);
+  animation: density-breathe 18s ease-in-out infinite; mix-blend-mode: multiply;
+}
+@keyframes density-breathe { 0% { opacity: 0.85; } 50% { opacity: 1; } 100% { opacity: 0.85; } }
+
+/* CAMPO DE CONFIRMACIÓN */
+#confirmation-field {
+  position: fixed; top: 50%; left: 50%; width: 420px; height: 420px;
+  transform: translate(-50%, -50%); z-index: 20; cursor: pointer;
+}
+
+/* EFECTOS DE COLAPSO (BLUR) */
+body.pre-collapse video { transform: scale(1.015); filter: contrast(1.05) saturate(0.95); }
+body.collapse video {
+  transform: scale(0.92);
+  filter: blur(6px) contrast(0.9); /* ESTE ES EL BLUR QUE QUIERES MANTENER 1 SEGUNDO EN V3 */
+  transition: transform 1.4s ease, filter 1.4s ease;
+}
+
+/* --- BOTÓN SKIP --- */
+#skip-field {
+  position: fixed; bottom: 15%; left: 50%; transform: translateX(-50%);
+  z-index: 50; opacity: 0; pointer-events: none; transition: opacity 0.5s ease; cursor: pointer;
+}
+#skip-field.visible { opacity: 1; pointer-events: all; }
+
+.skip-content {
+  position: relative; font-family: 'Times New Roman', serif; font-size: 1.2rem;
+  letter-spacing: 0.3em; color: #dcdcdc; text-transform: uppercase;
+}
+.skip-layer.base { display: block; position: relative; z-index: 1; }
+.skip-layer.slice {
+  display: block; position: absolute; top: 0; left: 0; width: 100%; height: 100%;
+  z-index: 2; opacity: 0.8; clip-path: inset(46% 0 42% 0);
+  animation: slice-drift 14s ease-in-out infinite; mix-blend-mode: screen;
+}
+@keyframes slice-drift { 0% { transform: translateX(-2px); } 50% { transform: translateX(3px); } 100% { transform: translateX(-2px); } }
