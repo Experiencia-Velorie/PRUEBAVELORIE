@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8" />
+  <title>Casa Velórie</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <link rel="stylesheet" href="styles.css" />
+</head>
+
+<body>
+
+  <div id="scene">
+    <video id="v1" autoplay muted loop playsinline></video>
+    <video id="v2" muted playsinline></video>
+    <video id="v3" muted playsinline></video>
+  </div>
+
+  <div id="density-field"></div>
+
+  <div id="confirmation-field"></div>
+
+  <div id="skip-field">
+    <div class="skip-content">
+      <span class="skip-layer base">SKIP</span>
+      <span class="skip-layer slice">SKIP</span>
+    </div>
+  </div>                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                            
+
+  <script src="ritual.js"></script>
+</body>
+</html>
